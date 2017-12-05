@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.puestoFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.empleadoFormHeader}</h2>
+                <p:fieldset legend="#{str.empleadoLegendForm}">
+                <h:form>
+                    <p:panelGrid columns="1"> 
+                         <p:selectOneMenu value="#{empleadoBean.empleado.salario.idSalario}">
+                                <f:selectItems value="#{empleadoBean.salarios}" var="s" 
+                                               itemLabel="#{s.nombre}" itemValue="#{s.idSalario}"></f:selectItems>                                     
+                            </p:selectOneMenu>   
+                        
+                    <p:inputText placeholder="#{str.empleadoNamePrompt}" value="#{empleadoBean.empleado.nombre}"></p:inputText>
+                     <p:inputText placeholder="#{str.empleadoApePrompt}" value="#{empleadoBean.empleado.apellido}"></p:inputText>
+                      <p:inputText placeholder="#{str.empleadoOcuPrompt}" value="#{empleadoBean.empleado.ocupacion}"></p:inputText>
+                       <p:inputText placeholder="#{str.empleadoExpPrompt}" value="#{empleadoBean.empleado.experiencia}"></p:inputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{str.buttonSave}" action="#{empleadoBean.guardar()}"></p:commandButton>
+                    <p:commandButton value="#{str.buttonDelete}" action="#{empleadoBean.eliminar()}"></p:commandButton>
+                    <p:commandButton value="#{str.buttonCancel}" action="#{empleadoBean.cancelar()}"></p:commandButton>
+                </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

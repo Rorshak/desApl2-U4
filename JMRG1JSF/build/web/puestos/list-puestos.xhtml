@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        <h:head>
+             <title>#{str.puestoListTitle}</title>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/templates/template.xhtml">
+                <ui:define name="contenido">
+                    <h1>#{str.puestoListTitle}</h1>
+                    <h:form>
+                        <p:commandButton value="#{str.buttonAdd}" action="#{puestoBean.iniciar()}"> </p:commandButton>
+                    </h:form>
+                    <p:dataTable value="#{puestoBean.puestos}" var="p">
+                        <p:column headerText="#{str.action}">
+                            <h:form>
+                                <p:commandButton value="#{str.buttonEdit}" action="#{puestoBean.editar(p)}"></p:commandButton>
+                            </h:form>
+                        </p:column>
+                        <p:column headerText="#{str.puestoNameHeader}">
+                            <p:outputLabel value="#{p.nombre}"></p:outputLabel>
+                            </p:column>
+                        <p:column headerText="#{str.divisionNameHeader}">
+                            <p:outputLabel value="#{p.division.nombre}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="#{str.puestoAreaHeader}">
+                            <p:outputLabel value="#{p.area}"></p:outputLabel>
+                            </p:column>
+                            <p:column headerText="#{str.puestoNivelHeader}">
+                            <p:outputLabel value="#{p.nivel}"></p:outputLabel>
+                            </p:column>
+                            <p:column headerText="#{str.puestoRangoHeader}">
+                             <p:outputLabel value="#{p.rango}"></p:outputLabel>
+                             </p:column>
+                             
+                        
+                    </p:dataTable>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+</html>

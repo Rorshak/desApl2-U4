@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.divisionFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.divisionFormHeader}</h2>
+                <p:fieldset legend="#{str.divisionLegendForm}">
+                <h:form>
+                    <h:panelGrid columns="1">
+                    <p:inputText placeholder="#{str.divisionNamePrompt}" value="#{divisionBean.division.nombre}"></p:inputText>
+                    
+                       <p:inputText placeholder="#{str.categoriaPrompt}" value="#{divisionBean.division.categoria}"></p:inputText>
+                           <p:inputText placeholder="#{str.nivelPrompt}" value="#{divisionBean.division.nivel}"></p:inputText>
+                    </h:panelGrid>
+                    <p:commandButton value="#{str.buttonSave}" action="#{divisionBean.guardar()}"></p:commandButton>
+                    <p:commandButton value="#{str.buttonDelete}" action="#{divisionBean.eliminar()}"></p:commandButton>
+                    <p:commandButton value="#{str.buttonCancel}" action="#{divisionBean.cancelar()}"></p:commandButton>
+                
+                </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
